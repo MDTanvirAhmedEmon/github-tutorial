@@ -1,58 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple Text Editor</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            text-align: center;
-        }
-        #editor {
-            width: 80%;
-            height: 300px;
-            border: 1px solid #ccc;
-            padding: 10px;
-            margin: 20px auto;
-            overflow-y: auto;
-            background: #fff;
-        }
-        .button-container {
-            margin: 10px;
-        }
-        button {
-            padding: 10px 15px;
-            margin: 5px;
-            cursor: pointer;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        text-align: center;
+      }
+      #editor {
+        width: 80%;
+        height: 300px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 20px auto;
+        overflow-y: auto;
+        background: #fff;
+      }
+      .button-container {
+        margin: 10px;
+      }
+      button {
+        padding: 10px 15px;
+        margin: 5px;
+        cursor: pointer;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h2>Simple Text Editor</h2>
     <div id="editor" contenteditable="true">Start typing here...</div>
     <div class="button-container">
-        <button onclick="saveText()">Save</button>
-        <button onclick="clearText()">Clear</button>
+      <button onclick="saveText()">Save</button>
+      <button onclick="clearText()">Clear</button>
     </div>
     <script>
-        function saveText() {
-            const text = document.getElementById("editor").innerHTML;
-            localStorage.setItem("savedText", text);
-            alert("Text saved!");
+      function saveText() {
+        const text = document.getElementById("editor").innerHTML;
+        localStorage.setItem("savedText", text);
+        alert("Text saved!");
+      }
+
+      function clearText() {
+        document.getElementById("editor").innerHTML = "";
+      }
+
+      window.onload = function () {
+        const savedText = localStorage.getItem("savedText");
+        if (savedText) {
+          document.getElementById("editor").innerHTML = savedText;
         }
-        
-        function clearText() {
-            document.getElementById("editor").innerHTML = "";
-        }
-        
-        window.onload = function() {
-            const savedText = localStorage.getItem("savedText");
-            if (savedText) {
-                document.getElementById("editor").innerHTML = savedText;
-            }
-        };
+      };
     </script>
-</body>
+  </body>
 </html>
